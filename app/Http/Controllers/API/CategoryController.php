@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
@@ -17,19 +18,11 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = Category::allData()->latest()->get();
-        if (!$categories) {
-            return response()->json([
-                'status' => 'false',
-                'message' => __('messages.category_not_found'),
-                'data' => '',
-            ], 404);
+        $data = Category::allData()->latest()->get();
+        if (!$data) {
+            return ApiResponse::error(__('messages.category_not_found'), $data);
         }
-        return response()->json([
-            'status' => 'success',
-            'message' => __('messages.category_index'),
-            'data' => $categories,
-        ], 200);
+        return ApiResponse::error(__('messages.category_index'), $data);
     }
 
     /**
@@ -38,12 +31,8 @@ class CategoryController extends Controller
     public function store(StoreCategoryRequest $request)
     {
         $validatedData = $request->validated();
-        $category = Category::create($validatedData);
-        return response()->json([
-            'status' => 'success',
-            'message' => __('messages.category_created'),
-            'data' => $category,
-        ], 201);
+        $data = Category::create($validatedData);
+        return ApiResponse::success(__('messages.category_created'), $data);
     }
 
     /**
@@ -51,19 +40,11 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = Category::id($id)->first();
-        if (!$category) {
-            return response()->json([
-                'status' => 'false',
-                'message' => __('messages.category_not_found'),
-                'data' => null,
-            ], 404);
+        $data = Category::id($id)->first();
+        if (!$data) {
+            return ApiResponse::error(__('messages.category_not_found'), $data);
         }
-        return response()->json([
-            'status' => 'success',
-            'message' => __('messages.category_show'),
-            'data' => $category,
-        ], 200);
+        return ApiResponse::success(__('messages.category_show'), $data);
     }
 
     /**
@@ -71,21 +52,13 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request,  $id)
     {
-        $category = Category::id($id)->first();
+        $data = Category::id($id)->first();
         $validatedData = $request->validated();
-        if (!$category) {
-            return response()->json([
-                'status' => 'false',
-                'message' => __('messages.something_went_wrong'),
-                'data' => '',
-            ], 404);
+        if (!$data) {
+            return ApiResponse::error(__('messages.something_went_wrong'), $data);
         }
-        $category->update($validatedData);
-        return response()->json([
-            'status' => 'success',
-            'message' => __('messages.category_update'),
-            'data' => $category,
-        ], 200);
+        $data->update($validatedData);
+        return ApiResponse::success(__('messages.category_update'), $data);
     }
 
     /**
@@ -93,19 +66,11 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::id($id)->first();
-        if (!$category) {
-            return response()->json([
-                'status' => 'false',
-                'message' => __('messages.category_not_found'),
-                'data' => '',
-            ], 404);
+        $data = Category::id($id)->first();
+        if (!$data) {
+            return ApiResponse::error(__('messages.something_went_wrong'), $data);
         }
-        $category->destroy($category->id);
-        return response()->json([
-            'status' => 'success',
-            'message' => __('messages.category_deleted'),
-            'data' => $category,
-        ], 200);
+        $data->destroy($data->id);
+        return ApiResponse::success(__('messages.category_deleted'), $data);
     }
 }

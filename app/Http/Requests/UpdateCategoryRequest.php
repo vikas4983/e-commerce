@@ -27,7 +27,6 @@ class UpdateCategoryRequest extends FormRequest
             'is_active' => ['nullable', 'in:0,1'],
         ];
     }
-
     public function messages(): array
     {
         return [

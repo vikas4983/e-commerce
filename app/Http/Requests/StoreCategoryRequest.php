@@ -22,19 +22,21 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255','unique:categories,name'],
-            'is_active' => ['required', 'in:0,1']
+            'name' => ['required', 'string', 'max:255', 'unique:categories,name'],
+            'is_active' => ['required', 'in:0,1'],
         ];
     }
+
     public function messages(): array
     {
         return [
-            'name.required' => 'Category name is required.',
-            'name.string' => 'Category name must be a string.',
-            'name.max' => 'Category name should not exceed 255 characters.',
-            'name.unique' => 'Category name already exists.',
+            'name.required'   => 'Category name is required.',
+            'name.string'     => 'Category name must be a string.',
+            'name.max'        => 'Category name should not exceed 255 characters.',
+            'name.unique'     => 'Category name already exists.',
 
-           
+            'is_active.required' => 'The is_active field is required.',
+            'is_active.in'       => 'The is_active field must be either 0 (inactive) or 1 (active).',
         ];
     }
 }
