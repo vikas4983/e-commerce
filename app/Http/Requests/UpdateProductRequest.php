@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateProductRequest extends FormRequest
 {
@@ -23,10 +24,11 @@ class UpdateProductRequest extends FormRequest
     {
         return [
             'category_id' => ['required', 'integer', 'exists:categories,id'],
-            'name' => ['required', 'string', 'max:255'],
+            'brand_id' => ['required', 'integer', 'exists:brands,id'],
+            'name' => ['required', 'string', 'max:255', Rule::unique('categories', 'name')->ignore($this->route('category'))],
             'price' => ['required', 'numeric'],
             'stock' => ['required', 'integer'],
-            'description' => ['required', 'string', 'max:255'], 
+            'description' => ['required', 'string', 'max:255'],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
             'is_active' => ['required', 'in:0,1'],
         ];
@@ -38,9 +40,14 @@ class UpdateProductRequest extends FormRequest
             'category_id.integer' => 'Category ID must be an integer.',
             'category_id.exists' => 'Selected category does not exist.',
 
+            'brand_id.required' => 'Brand ID is required.',
+            'brand_id.integer' => 'Brand ID must be an integer.',
+            'brand_id.exists' => 'Selected brand does not exist.',
+
             'name.required' => 'Product name is required.',
             'name.string' => 'Product name must be a valid string.',
             'name.max' => 'Product name must not exceed 255 characters.',
+            'name.unique' => 'Product name must be unique required.',
 
             'price.required' => 'Price is required.',
             'price.numeric' => 'Price must be a valid number.',
