@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\BrandController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\ProductController;
 use Illuminate\Http\Request;
@@ -24,4 +25,5 @@ Route::post('/login', function (Request $request) {
 Route::middleware('set.locale')->group(function () {
     Route::apiResource('categories', CategoryController::class);
     Route::apiResource('products', ProductController::class);
+    Route::apiResource('brands', BrandController::class);
 });

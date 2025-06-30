@@ -20,5 +20,13 @@ return [
     'product_update'      => 'Product has been updated successfully.',
     'product_deleted'     => 'Product has been deleted successfully.',
     'product_not_found'   => 'The requested product was not found.',
+
+    // Brand
+    'brand_created'     => 'Brand has been created successfully.',
+    'brand_index'       => 'All brand have been retrieved successfully.',
+    'brand_show'        => 'Brand details retrieved successfully.',
+    'brand_update'      => 'Brand has been updated successfully.',
+    'brand_deleted'     => 'Brand has been deleted successfully.',
+    'brand_not_found'   => 'The requested brand was not found.',
   
 ];
