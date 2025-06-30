@@ -23,7 +23,8 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'category_id' => ['required', 'integer', 'exists:categories,id'],
-            'name' => ['required', 'string', 'max:255'],
+            'brand_id' => ['required', 'integer', 'exists:brands,id'],
+            'name' => ['required', 'string', 'unique:products,name','max:255'],
             'price' => ['required', 'numeric'],
             'stock' => ['required', 'integer',],
             'description' => ['required', 'string', 'max:255'],
@@ -37,8 +38,12 @@ class StoreProductRequest extends FormRequest
         return [
             'category_id.required' => 'Category ID is required.',
             'category_id.integer' => 'Category ID must be an integer.',
+           
+            'brand_id.required' => 'Brand ID is required.',
+            'brand_id.integer' => 'Brand ID must be an integer.',
 
             'name.required' => 'Product name is required.',
+            'name.unique' => 'Product name must be unique required.',
             'name.string' => 'Product name must contain letters and spaces.',
             'name.max' => 'Product name must not be greater than 255 characters.',
 
