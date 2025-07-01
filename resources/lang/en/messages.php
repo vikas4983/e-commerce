@@ -28,5 +28,13 @@ return [
     'brand_update'      => 'Brand has been updated successfully.',
     'brand_deleted'     => 'Brand has been deleted successfully.',
     'brand_not_found'   => 'The requested brand was not found.',
+
+    // Product Variant
+    'product_variant_created'     => 'Product variant has been created successfully.',
+    'product_variant_index'       => 'All product variant have been retrieved successfully.',
+    'product_variant_show'        => 'Product variant details retrieved successfully.',
+    'product_variant_update'      => 'Product variant has been updated successfully.',
+    'product_variant_deleted'     => 'Product variant has been deleted successfully.',
+    'product_variant_not_found'   => 'The requested product variant was not found.',
   
 ];
