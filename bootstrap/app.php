@@ -17,11 +17,16 @@ return Application::configure(basePath: dirname(__DIR__))
             \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
 
         ]);
-
+        // For specific api routes
         $middleware->alias([
             'set.locale' => \App\Http\Middleware\SetLocaleFromHeader::class,
+            'guest.token' => \App\Http\Middleware\EnsureGuestTokenExists::class,
         ]);
-        //
+        // For all API Routes
+        // $middleware->api(append: [
+        //     \App\Http\Middleware\EnsureGuestTokenExists::class, 
+        // ]);
+
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

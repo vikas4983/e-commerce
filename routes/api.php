@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\BrandController;
+use App\Http\Controllers\API\CartItemController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\ProductVariantController;
@@ -28,4 +29,5 @@ Route::middleware('set.locale')->group(function () {
     Route::apiResource('products', ProductController::class);
     Route::apiResource('brands', BrandController::class);
     Route::apiResource('productVariants', ProductVariantController::class);
+    Route::apiResource('cartItems', CartItemController::class);
 });

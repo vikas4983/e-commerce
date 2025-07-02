@@ -1,9 +1,9 @@
 <?php
 
 return [
-     
+
     //Genral
-     'something_went_wrong' => 'An unexpected error occurred. Please try again later.',
+    'something_went_wrong' => 'An unexpected error occurred. Please try again later.',
 
     // Category
     'category_created'     => 'Category has been created successfully.',
@@ -12,7 +12,7 @@ return [
     'category_update'      => 'Category has been updated successfully.',
     'category_deleted'     => 'Category has been deleted successfully.',
     'category_not_found'   => 'The requested category was not found.',
-   
+
     // Product
     'product_created'     => 'Product has been created successfully.',
     'product_index'       => 'All categories have been retrieved successfully.',
@@ -36,5 +36,13 @@ return [
     'product_variant_update'      => 'Product variant has been updated successfully.',
     'product_variant_deleted'     => 'Product variant has been deleted successfully.',
     'product_variant_not_found'   => 'The requested product variant was not found.',
-  
+
+    // Cart Item
+    'cart_item_created'     => 'Cart item has been created successfully.',
+    'cart_item_index'       => 'All product variant have been retrieved successfully.',
+    'cart_item_show'        => 'Cart item details retrieved successfully.',
+    'cart_item_update'      => 'Cart item has been updated successfully.',
+    'cart_item_deleted'     => 'Cart item has been deleted successfully.',
+    'cart_item_not_found'   => 'The requested cart item was not found.',
+
 ];
