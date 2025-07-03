@@ -45,4 +45,12 @@ return [
     'cart_item_deleted'     => 'Cart item has been deleted successfully.',
     'cart_item_not_found'   => 'The requested cart item was not found.',
 
+    // Order
+    'order_created'     => 'Order has been created successfully.',
+    'order_index'       => 'All order have been retrieved successfully.',
+    'order_show'        => 'Order details retrieved successfully.',
+    'order_update'      => 'Order has been updated successfully.',
+    'order_deleted'     => 'Order has been deleted successfully.',
+    'order_not_found'   => 'The requested order was not found.',
+
 ];

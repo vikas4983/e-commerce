@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\BrandController;
 use App\Http\Controllers\API\CartItemController;
 use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\OrderController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\ProductVariantController;
 use Illuminate\Http\Request;
@@ -30,4 +31,5 @@ Route::middleware('set.locale')->group(function () {
     Route::apiResource('brands', BrandController::class);
     Route::apiResource('productVariants', ProductVariantController::class);
     Route::apiResource('cartItems', CartItemController::class);
+    Route::apiResource('orders', OrderController::class);
 });
