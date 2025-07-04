@@ -25,9 +25,9 @@ class UpdateOrderRequest extends FormRequest
             'user_id'         => ['nullable', 'exists:users,id'],
             'guest_token'     => ['nullable', 'uuid'],
             'total_amount'    => ['required', 'numeric', 'min:0'],
-            'payment_status'  => ['nullable', 'string'],
+            'payment_status'  => ['nullable', 'string','exists:statuses,id'],
             'payment_method'  => ['nullable', 'string', 'max:50'],
-            'order_status'    => ['required', 'string'],
+            'order_status'    => ['required', 'string','exists:statuses,id'],
             'is_active'       => ['nullable', 'in:0,1'],
         ];
     }
