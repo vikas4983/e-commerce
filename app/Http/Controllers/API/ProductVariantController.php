@@ -16,7 +16,7 @@ class ProductVariantController extends Controller
      */
     public function index()
     {
-        $data = ProductVariant::alldata()->latest()->get();
+        $data = ProductVariant::allData()->latest()->get();
         if (!$data) {
             return ApiResponse::error(__('messages.product_variant_not_found'), $data);
         }

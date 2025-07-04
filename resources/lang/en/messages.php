@@ -53,4 +53,12 @@ return [
     'order_deleted'     => 'Order has been deleted successfully.',
     'order_not_found'   => 'The requested order was not found.',
 
+    // Status
+    'status_created'     => 'Status has been created successfully.',
+    'status_index'       => 'All status have been retrieved successfully.',
+    'status_show'        => 'Status details retrieved successfully.',
+    'status_update'      => 'Status has been updated successfully.',
+    'status_deleted'     => 'Status has been deleted successfully.',
+    'status_not_found'   => 'The requested status was not found.',
+
 ];
