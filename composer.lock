@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "22efb04eb8ce7bce7ad1fa1432cadb25",
+    "content-hash": "85f7663b9c5f7aaf0d3e5f21c07a3058",
     "packages": [
         {
             "name": "archtechx/enums",
@@ -10525,6 +10525,44 @@
             "time": "2024-12-21T16:25:41+00:00"
         },
         {
+            "name": "vikas4983/laravel-country-crud-api",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vikas4983/laravel-country-crud-API.git",
+                "reference": "432947a905153db2c1492ea29b6b6869113705fe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vikas4983/laravel-country-crud-API/zipball/432947a905153db2c1492ea29b6b6869113705fe",
+                "reference": "432947a905153db2c1492ea29b6b6869113705fe",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "CountryList\\CountryListServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "CountryList\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel package that provides a country, state, and city CRUD API.",
+            "support": {
+                "source": "https://github.com/vikas4983/laravel-country-crud-API/tree/main",
+                "issues": "https://github.com/vikas4983/laravel-country-crud-API/issues"
+            },
+            "time": "2025-07-08T12:27:01+00:00"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v5.6.2",
             "source": {
@@ -13313,8 +13351,10 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "vikas4983/laravel-country-crud-api": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
