@@ -179,6 +179,17 @@
       0 => 'Livewire\\LivewireServiceProvider',
     ),
   ),
+  'maatwebsite/excel' => 
+  array (
+    'aliases' => 
+    array (
+      'Excel' => 'Maatwebsite\\Excel\\Facades\\Excel',
+    ),
+    'providers' => 
+    array (
+      0 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
+    ),
+  ),
   'nesbot/carbon' => 
   array (
     'providers' => 
@@ -237,6 +248,13 @@
     'providers' => 
     array (
       0 => 'Tighten\\Ziggy\\ZiggyServiceProvider',
+    ),
+  ),
+  'vikas4983/laravel-country-crud-api' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'CountryList\\CountryListServiceProvider',
     ),
   ),
 );
