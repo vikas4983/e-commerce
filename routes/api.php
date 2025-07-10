@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AddressController;
 use App\Http\Controllers\API\BrandController;
 use App\Http\Controllers\API\CartItemController;
 use App\Http\Controllers\API\CategoryController;
@@ -21,8 +22,22 @@ Route::post('/login', function (Request $request) {
     }
     $user = Auth::user();
     return response()->json([
+        'message' => 'LOgin successfully',
         'token' => $user->createToken('api-token')->plainTextToken,
-        /// 'user' => $user
+        'user' => $user
+    ]);
+});
+Route::post('/logout', function (Request $request) {
+    $request->user()->tokens()->delete();
+    return response()->json([
+        'message' => 'Successfully logged out'
+    ]);
+})->middleware('auth:sanctum');
+
+Route::middleware('auth:sanctum')->get('checkAuth', function () {
+    return response()->json([
+        'message' => 'You are logged in',
+        'user' => Auth::user()
     ]);
 });
 
@@ -34,4 +49,5 @@ Route::middleware('set.locale')->group(function () {
     Route::apiResource('cartItems', CartItemController::class);
     Route::apiResource('statuses', StatusController::class);
     Route::apiResource('orders', OrderController::class);
+    Route::apiResource('addresses', AddressController::class);
 });

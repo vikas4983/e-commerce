@@ -20,4 +20,12 @@ class ApiResponse
             'data' => $data,
         ], $code);
     }
+    public static function already($message = 'Success', $data = null, $code = 200)
+    {
+        return response()->json([
+            'status' => true,
+            'message' => $message,
+            'data' => $data,
+        ], $code);
+    }
 }

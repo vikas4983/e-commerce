@@ -61,4 +61,14 @@ return [
     'status_deleted'     => 'Status has been deleted successfully.',
     'status_not_found'   => 'The requested status was not found.',
 
+    // Address
+    'address_created'     => 'Address has been created successfully.',
+    'address_index'       => 'All address have been retrieved successfully.',
+    'address_show'        => 'Address details retrieved successfully.',
+    'address_update'      => 'Address has been updated successfully.',
+    'address_deleted'     => 'Address has been deleted successfully.',
+    'address_not_found'   => 'The requested address was not found.',
+    'address_already'   => 'You have already added this address..',
+
+
 ];
