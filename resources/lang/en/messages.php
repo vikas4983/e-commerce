@@ -71,12 +71,21 @@ return [
     'address_already'   => 'You have already added this address..',
 
     // Deliver Partner
-    'delivery_partner_created'     => 'डिलीवरी पार्टनर सफलतापूर्वक जोड़ा गया है।',
-    'delivery_partner_index'       => 'सभी डिलीवरी पार्टनर सफलतापूर्वक प्राप्त किए गए हैं।',
-    'delivery_partner_show'        => 'डिलीवरी पार्टनर का विवरण सफलतापूर्वक प्राप्त हुआ है।',
-    'delivery_partner_update'      => 'डिलीवरी पार्टनर को सफलतापूर्वक अपडेट किया गया है।',
-    'delivery_partner_deleted'     => 'डिलीवरी पार्टनर को सफलतापूर्वक हटाया गया है।',
-    'delivery_partner_not_found'   => 'अनुरोधित डिलीवरी पार्टनर नहीं मिला।',
+    'delivery_partner_created'     => 'Delivery partner has been added successfully.',
+    'delivery_partner_index'       => 'All delivery partners have been retrieved successfully.',
+    'delivery_partner_show'        => 'Delivery partner details retrieved successfully.',
+    'delivery_partner_update'      => 'Delivery partner has been updated successfully.',
+    'delivery_partner_deleted'     => 'Delivery partner has been deleted successfully.',
+    'delivery_partner_not_found'   => 'The requested delivery partner was not found.',
+
+    // Wishlist
+    'wishlist_created'     => 'Wishlist has been added successfully.',
+    'wishlist_index'       => 'All wishlist  have been retrieved successfully.',
+    'wishlist_show'        => 'Wishlist details retrieved successfully.',
+    'wishlist_update'      => 'Wishlist has been updated successfully.',
+    'wishlist_deleted'     => 'Wishlist has been deleted successfully.',
+    'wishlist_not_found'   => 'The requested wishlist was not found.',
+    'wishlist_already'   => 'You have already wishlist this product..',
 
 
 
