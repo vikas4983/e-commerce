@@ -70,5 +70,14 @@ return [
     'address_not_found'   => 'The requested address was not found.',
     'address_already'   => 'You have already added this address..',
 
+    // Deliver Partner
+    'delivery_partner_created'     => 'डिलीवरी पार्टनर सफलतापूर्वक जोड़ा गया है।',
+    'delivery_partner_index'       => 'सभी डिलीवरी पार्टनर सफलतापूर्वक प्राप्त किए गए हैं।',
+    'delivery_partner_show'        => 'डिलीवरी पार्टनर का विवरण सफलतापूर्वक प्राप्त हुआ है।',
+    'delivery_partner_update'      => 'डिलीवरी पार्टनर को सफलतापूर्वक अपडेट किया गया है।',
+    'delivery_partner_deleted'     => 'डिलीवरी पार्टनर को सफलतापूर्वक हटाया गया है।',
+    'delivery_partner_not_found'   => 'अनुरोधित डिलीवरी पार्टनर नहीं मिला।',
+
+
 
 ];

@@ -4,6 +4,7 @@ use App\Http\Controllers\API\AddressController;
 use App\Http\Controllers\API\BrandController;
 use App\Http\Controllers\API\CartItemController;
 use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\DeliveryPartnerController;
 use App\Http\Controllers\API\OrderController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\ProductVariantController;
@@ -50,4 +51,5 @@ Route::middleware('set.locale')->group(function () {
     Route::apiResource('statuses', StatusController::class);
     Route::apiResource('orders', OrderController::class);
     Route::apiResource('addresses', AddressController::class);
+    Route::apiResource('deliveryPartners', DeliveryPartnerController::class);
 });
