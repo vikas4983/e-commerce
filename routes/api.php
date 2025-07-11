@@ -6,6 +6,7 @@ use App\Http\Controllers\API\CartItemController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\DeliveryPartnerController;
 use App\Http\Controllers\API\OrderController;
+use App\Http\Controllers\API\OrderStatusLogController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\ProductVariantController;
 use App\Http\Controllers\API\ReviewController;
@@ -44,16 +45,19 @@ Route::middleware('auth:sanctum')->get('checkAuth', function () {
     ]);
 });
 
-Route::middleware('set.locale')->group(function () {
-    Route::apiResource('categories', CategoryController::class);
-    Route::apiResource('products', ProductController::class);
-    Route::apiResource('brands', BrandController::class);
+Route::middleware(['auth:sanctum', 'set.locale'])->group(function () {
+
     Route::apiResource('productVariants', ProductVariantController::class);
     Route::apiResource('cartItems', CartItemController::class);
     Route::apiResource('statuses', StatusController::class);
-    Route::apiResource('orders', OrderController::class);
-    Route::apiResource('addresses', AddressController::class);
     Route::apiResource('deliveryPartners', DeliveryPartnerController::class);
     Route::apiResource('wishlists', WishlistController::class);
     Route::apiResource('reviews', ReviewController::class);
+    Route::apiResource('orderStatusLogs', OrderStatusLogController::class);
 });
+
+Route::apiResource('categories', CategoryController::class);
+Route::apiResource('products', ProductController::class);
+Route::apiResource('brands', BrandController::class);
+Route::apiResource('orders', OrderController::class);
+Route::apiResource('addresses', AddressController::class);

@@ -7,10 +7,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
+use App\Traits\HandlesAuthUser;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    use HandlesAuthUser;
     /**
      * Display a listing of the resource.
      */
@@ -28,6 +30,10 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
+         $userId = $this->authUserId();
+        if (!$userId) {
+            return ApiResponse::error(__('messages.login'), '');
+        }
         $validatedData = $request->validated();
 
         $data  = Product::create($validatedData);
@@ -39,6 +45,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
+
         $data = Product::id($id)->first();
         if (!$data) {
             return ApiResponse::error(__('messages.product_not_found'), $data);
@@ -51,6 +58,10 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, $id)
     {
+         $userId = $this->authUserId();
+        if (!$userId) {
+            return ApiResponse::error(__('messages.login'), '');
+        }
         $data = Product::id($id)->first();
         $valiodatedData = $request->validated();
         if (!$data) {
@@ -65,6 +76,10 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
+         $userId = $this->authUserId();
+        if (!$userId) {
+            return ApiResponse::error(__('messages.login'), '');
+        }
         $data = Product::id($id)->first();
         if (!$data) {
             return ApiResponse::error(__('messages.something_went_wrong'), $data);

@@ -7,16 +7,22 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Order;
+use App\Traits\HandlesAuthUser;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+    use HandlesAuthUser;
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-         $data = Order::alldata()->latest()->get();
+        $userId = $this->authUserId();
+        if (!$userId) {
+            return ApiResponse::error(__('messages.login'), '');
+        }
+        $data = Order::alldata()->latest()->get();
         if (!$data) {
             return ApiResponse::error(__('messages.order_not_found'), $data);
         }
@@ -29,8 +35,14 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request)
     {
         $validatedData = $request->validated();
-        $data  = Order::create($validatedData);
-        return ApiResponse::success(__('messages.order_created'), $data);
+        $userId = $this->authUserId();
+        if ($userId) {
+            $validatedData['user_id'] = $userId;
+            $data = Order::create($validatedData);
+        } else {
+            $data = Order::create($validatedData);
+        }
+        return ApiResponse::success(__('messages.address_created'), $data);
     }
 
     /**
@@ -38,7 +50,7 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-       $data = Order::id($id)->first();
+        $data = Order::id($id)->first();
         if (!$data) {
             return ApiResponse::error(__('messages.order_not_found'), $data);
         }
@@ -50,7 +62,11 @@ class OrderController extends Controller
      */
     public function update(UpdateOrderRequest $request, string $id)
     {
-         $data = Order::id($id)->first();
+        $userId = $this->authUserId();
+        if (!$userId) {
+            return ApiResponse::error(__('messages.login'), '');
+        }
+        $data = Order::id($id)->first();
         $valiodatedData = $request->validated();
         if (!$data) {
             return ApiResponse::error(__('messages.something_went_wrong'), $data);
@@ -64,7 +80,8 @@ class OrderController extends Controller
      */
     public function destroy(string $id)
     {
-         $data = Order::id($id)->first();
+
+        $data = Order::id($id)->first();
         if (!$data) {
             return ApiResponse::error(__('messages.something_went_wrong'), $data);
         }

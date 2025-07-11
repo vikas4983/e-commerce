@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 class Order extends Model
 {
     protected $fillable = [
-       
+
 
         'user_id',
         'guest_token',
@@ -18,6 +18,14 @@ class Order extends Model
         'order_status',
         'is_active',
     ];
+    protected static function booted()
+    {
+        static::creating(function ($model) {
+            if (is_null($model->user_id) && is_null($model->guest_token)) {
+                $model->guest_token = (string) Str::uuid();
+            }
+        });
+    }
     public function scopeid($query, $id)
     {
         return $query->where('id', $id);

@@ -7,10 +7,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBrandRequest;
 use App\Http\Requests\UpdateBrandRequest;
 use App\Models\brand;
+use App\Traits\HandlesAuthUser;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
+    use HandlesAuthUser;
     /**
      * Display a listing of the resource.
      */
@@ -28,6 +30,10 @@ class BrandController extends Controller
      */
     public function store(StoreBrandRequest $request)
     {
+         $userId = $this->authUserId();
+        if (!$userId) {
+            return ApiResponse::error(__('messages.login'), '');
+        }
         $validatedData = $request->validated();
         $data  = Brand::create($validatedData);
         return ApiResponse::success(__('messages.brand_created'), $data);
@@ -38,6 +44,10 @@ class BrandController extends Controller
      */
     public function show(string $id)
     {
+         $userId = $this->authUserId();
+        if (!$userId) {
+            return ApiResponse::error(__('messages.login'), '');
+        }
         $data = Brand::id($id)->first();
         if (!$data) {
             return ApiResponse::error(__('messages.brand_not_found'), $data);
@@ -50,6 +60,10 @@ class BrandController extends Controller
      */
     public function update(UpdateBrandRequest $request, string $id)
     {
+         $userId = $this->authUserId();
+        if (!$userId) {
+            return ApiResponse::error(__('messages.login'), '');
+        }
         $data = Brand::id($id)->first();
         $valiodatedData = $request->validated();
         if (!$data) {
@@ -64,6 +78,10 @@ class BrandController extends Controller
      */
     public function destroy(string $id)
     {
+         $userId = $this->authUserId();
+        if (!$userId) {
+            return ApiResponse::error(__('messages.login'), '');
+        }
         $data = Brand::id($id)->first();
         if (!$data) {
             return ApiResponse::error(__('messages.something_went_wrong'), $data);

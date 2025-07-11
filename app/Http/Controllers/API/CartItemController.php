@@ -7,10 +7,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCartItemRequest;
 use App\Http\Requests\UpdateCartItemRequest;
 use App\Models\CartItem;
+use App\Traits\HandlesAuthUser;
 use Illuminate\Http\Request;
 
 class CartItemController extends Controller
 {
+    use HandlesAuthUser;
     /**
      * Display a listing of the resource.
      */
@@ -28,8 +30,16 @@ class CartItemController extends Controller
      */
     public function store(StoreCartItemRequest $request)
     {
+        $userId = $this->authUserid();
         $validatedData = $request->validated();
-        $data  = CartItem::create($validatedData);
+        if ($userId) {
+            $validatedData['user_id'] = $userId;
+            $data  = CartItem::create($validatedData);
+        } else {
+            $data  = CartItem::create($validatedData);
+        }
+
+
         return ApiResponse::success(__('messages.cart_item_created'), $data);
     }
 

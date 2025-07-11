@@ -7,10 +7,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductVariantRequest;
 use App\Http\Requests\UpdateProductVariantRequest;
 use App\Models\ProductVariant;
+use App\Traits\HandlesAuthUser;
 use Illuminate\Http\Request;
 
 class ProductVariantController extends Controller
-{
+{ 
+    use HandlesAuthUser;
     /**
      * Display a listing of the resource.
      */
@@ -28,8 +30,14 @@ class ProductVariantController extends Controller
      */
     public function store(StoreProductVariantRequest $request)
     {
+        $userId = $this->authUserid();
         $validatedData = $request->validated();
-        $data  = ProductVariant::create($validatedData);
+        if ($userId) {
+            $validatedData['user_id'] = $userId;
+            $data  = ProductVariant::create($validatedData);
+        } else {
+            $data  = ProductVariant::create($validatedData);
+        }
         return ApiResponse::success(__('messages.product_variant_created'), $data);
     }
 

@@ -7,17 +7,23 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAddressRequest;
 use App\Http\Requests\UpdateAddressRequest;
 use App\Models\Address;
+use App\Traits\HandlesAuthUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class AddressController extends Controller
 {
+    use HandlesAuthUser;
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        $userId = $this->authUserId();
+        if (!$userId) {
+            return ApiResponse::error(__('messages.login'), '');
+        }
         $data = Address::allData()->latest()->get();
         if (!$data) {
             return ApiResponse::error(__('messages.address_not_found'), $data);
@@ -77,6 +83,10 @@ class AddressController extends Controller
      */
     public function update(UpdateAddressRequest $request, string $id)
     {
+        $userId = $this->authUserId();
+        if (!$userId) {
+            return ApiResponse::error(__('messages.login'), '');
+        }
         $data = Address::id($id)->first();
         $valiodatedData = $request->validated();
         if (!$data) {
@@ -91,6 +101,10 @@ class AddressController extends Controller
      */
     public function destroy(string $id)
     {
+        $userId = $this->authUserId();
+        if (!$userId) {
+            return ApiResponse::error(__('messages.login'), '');
+        }
         $data = Address::id($id)->first();
         if (!$data) {
             return ApiResponse::error(__('messages.something_went_wrong'), $data);
