@@ -8,6 +8,7 @@ use App\Http\Controllers\API\DeliveryPartnerController;
 use App\Http\Controllers\API\OrderController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\ProductVariantController;
+use App\Http\Controllers\API\ReviewController;
 use App\Http\Controllers\API\StatusController;
 use App\Http\Controllers\API\WishlistController;
 use Illuminate\Http\Request;
@@ -54,4 +55,5 @@ Route::middleware('set.locale')->group(function () {
     Route::apiResource('addresses', AddressController::class);
     Route::apiResource('deliveryPartners', DeliveryPartnerController::class);
     Route::apiResource('wishlists', WishlistController::class);
+    Route::apiResource('reviews', ReviewController::class);
 });

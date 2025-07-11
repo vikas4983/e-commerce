@@ -4,6 +4,7 @@ return [
 
     //Genral
     'something_went_wrong' => 'An unexpected error occurred. Please try again later.',
+    'login' => 'Login is required to continue.',
 
     // Category
     'category_created'     => 'Category has been created successfully.',
@@ -86,6 +87,17 @@ return [
     'wishlist_deleted'     => 'Wishlist has been deleted successfully.',
     'wishlist_not_found'   => 'The requested wishlist was not found.',
     'wishlist_already'   => 'You have already wishlist this product..',
+
+    // Review
+    'review_created'     => 'Review has been added successfully.',
+    'review_index'       => 'All review  have been retrieved successfully.',
+    'review_show'        => 'Review details retrieved successfully.',
+    'review_update'      => 'Review has been updated successfully.',
+    'review_deleted'     => 'Review has been deleted successfully.',
+    'review_not_found'   => 'The requested review was not found.',
+    'review_already'   => 'You have already review this product..',
+
+
 
 
 
