@@ -4,6 +4,7 @@ use App\Http\Controllers\API\AddressController;
 use App\Http\Controllers\API\BrandController;
 use App\Http\Controllers\API\CartItemController;
 use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\CouponController;
 use App\Http\Controllers\API\DeliveryPartnerController;
 use App\Http\Controllers\API\OrderController;
 use App\Http\Controllers\API\OrderStatusLogController;
@@ -26,7 +27,7 @@ Route::post('/login', function (Request $request) {
     }
     $user = Auth::user();
     return response()->json([
-        'message' => 'LOgin successfully',
+        'message' => 'Login successfully',
         'token' => $user->createToken('api-token')->plainTextToken,
         'user' => $user
     ]);
@@ -54,6 +55,7 @@ Route::middleware(['auth:sanctum', 'set.locale'])->group(function () {
     Route::apiResource('wishlists', WishlistController::class);
     Route::apiResource('reviews', ReviewController::class);
     Route::apiResource('orderStatusLogs', OrderStatusLogController::class);
+    Route::apiResource('coupons', CouponController::class);
 });
 
 Route::apiResource('categories', CategoryController::class);

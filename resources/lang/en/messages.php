@@ -96,7 +96,7 @@ return [
     'review_deleted'     => 'Review has been deleted successfully.',
     'review_not_found'   => 'The requested review was not found.',
     'review_already'   => 'You have already review this product..',
-    
+
     // Order Status Log 
     'order_status_log_created'     => 'Oder status log has been added successfully.',
     'order_status_log_index'       => 'All order status log  have been retrieved successfully.',
@@ -105,6 +105,15 @@ return [
     'order_status_log_deleted'     => 'Oder status log has been deleted successfully.',
     'order_status_log_not_found'   => 'The requested order status log was not found.',
     'order_status_log_already'   => 'You have already create order status log.',
+
+    // Coupon 
+    'coupon_created'     => 'Coupon has been added successfully.',
+    'coupon_index'       => 'All order status log  have been retrieved successfully.',
+    'coupon_show'        => 'Coupon details retrieved successfully..',
+    'coupon_update'      => 'Coupon has been updated successfully.',
+    'coupon_deleted'     => 'Coupon has been deleted successfully.',
+    'coupon_not_found'   => 'The requested coupon was not found.',
+    'coupon_already'   => 'You have already create coupon.',
 
 
 
