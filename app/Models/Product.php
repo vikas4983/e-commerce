@@ -28,7 +28,8 @@ class Product extends Model
     {
         return $query->where('id', $id);
     }
-    public function scopeAllData($query){
-       return $query;
+    public function scopeAllData($query)
+    {
+        return $query;
     }
 }
