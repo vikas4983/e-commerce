@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,10 @@ Route::post('/login', function (Request $request) {
     $user = Auth::user();
     return response()->json([
         'token' => $user->createToken('api-token')->plainTextToken,
-       /// 'user' => $user
+        /// 'user' => $user
     ]);
+});
+
+Route::middleware('set.locale')->group(function () {
+    Route::apiResource('categories', CategoryController::class);
 });
